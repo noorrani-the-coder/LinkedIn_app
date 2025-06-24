@@ -1,0 +1,35 @@
+<div class="job-form-container">
+  <h2>{{ editingIndex !== null ? 'Edit Job' : 'Post a New Job' }}</h2>
+
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <label>Job Title:</label>
+    <input type="text" formControlName="jobTitle" />
+
+    <label>Job Description:</label>
+    <textarea formControlName="jobDescription"></textarea>
+
+    <label>Location:</label>
+    <input type="text" formControlName="location" />
+
+    <label>Salary:</label>
+    <input type="text" formControlName="salary" />
+
+    <button type="submit" [disabled]="jobForm.invalid">
+      {{ editingIndex !== null ? 'Update Job' : 'Submit Job' }}
+    </button>
+  </form>
+</div>
+
+<div class="job-list-container" *ngIf="jobs.length > 0">
+  <h3>Posted Jobs</h3>
+  <ul>
+    <li *ngFor="let job of jobs; let i = index">
+      <strong>{{ job.jobTitle }}</strong> - {{ job.location }} - ₹{{ job.salary }}
+      <br />
+      <em>{{ job.jobDescription }}</em>
+      <br />
+      <button (click)="editJob(i)">Edit</button>
+      <button (click)="deleteJob(i)">Delete</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,16 @@
+<div class="dashboard-container" *ngIf="jobSeekerData">
+  <h2>Welcome, {{ jobSeekerData.fullName }}</h2>
+  <p><strong>Education:</strong> {{ jobSeekerData.education }}</p>
+  <p><strong>Experience:</strong> {{ jobSeekerData.experience }}</p>
+  <p><strong>Skills:</strong> {{ jobSeekerData.skills }}</p>
+  <p><strong>Contact:</strong> {{ jobSeekerData.contactInfo }}</p>
+
+  <!-- ✅ Available Jobs Button -->
+  <div class="dashboard-actions">
+    <button (click)="goToAvailableJobs()">Available Jobs</button>
+  </div>
+</div>
+
+<div class="dashboard-container" *ngIf="!jobSeekerData">
+  <p>No jobseeker data found. Please fill out the form first.</p>
+</div>

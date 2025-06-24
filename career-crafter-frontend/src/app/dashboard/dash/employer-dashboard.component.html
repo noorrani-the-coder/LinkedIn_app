@@ -1,0 +1,16 @@
+<div class="dashboard-container" *ngIf="employerData">
+  <h2>Welcome, {{ employerData.contactPerson }}</h2>
+
+  <p><strong>Company Name:</strong> {{ employerData.companyName }}</p>
+  <p><strong>Industry:</strong> {{ employerData.industry }}</p>
+  <p><strong>Contact Email:</strong> {{ employerData.contactEmail }}</p>
+
+  <div class="dashboard-actions">
+    <button (click)="viewJobs()">Add Jobs</button>
+    <button (click)="viewApplications()">Received Jobseeker Forms</button>
+  </div>
+</div>
+
+<div class="dashboard-container" *ngIf="!employerData">
+  <p>No employer data found. Please fill out the employer form first.</p>
+</div>

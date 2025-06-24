@@ -1,0 +1,51 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+    <h3 class="text-center mb-4 text-primary">Register for CareerCrafter</h3>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group mb-3">
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" class="form-control" placeholder="Enter username">
+        <small *ngIf="submitted && registerForm.controls['username'].errors" class="text-danger">
+          Username is required.
+        </small>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Your email">
+        <small *ngIf="submitted && registerForm.controls['email'].errors" class="text-danger">
+          Valid email is required.
+        </small>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
+        <small *ngIf="submitted && registerForm.controls['password'].errors" class="text-danger">
+          Password must be at least 6 characters.
+        </small>
+      </div>
+
+      <div class="form-group mb-4">
+        <label>Role</label>
+        <select formControlName="role" class="form-control">
+          <option value="" disabled>Select your role</option>
+          <option value="EMPLOYER">EMPLOYER</option>
+          <option value="JOB_SEEKER">JOB_SEEKER</option>
+        </select>
+        <small *ngIf="submitted && registerForm.controls['role'].errors" class="text-danger">
+          Role is required.
+        </small>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Register</button>
+
+      <div class="text-center mt-3">
+        <small>Already have an account? <a routerLink="/login">Login</a></small>
+      </div>
+
+    </form>
+  </div>
+</div>

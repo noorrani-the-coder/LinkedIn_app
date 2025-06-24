@@ -1,0 +1,91 @@
+<div class="container mt-4">
+
+  <!-- 🔙 Back Button -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="text-primary"><i class="bi bi-briefcase-fill me-2"></i>Available Jobs</h2>
+    <button class="btn btn-outline-secondary" (click)="goBack()">
+      <i class="bi bi-arrow-left-circle me-1"></i> Back
+    </button>
+  </div>
+
+  <!-- ✅ Job Form -->
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="p-4 rounded shadow-sm bg-light mb-4">
+    <h5 class="mb-4 text-success"><i class="bi bi-pencil-square me-2"></i>{{ editingJobId ? 'Update Job' : 'Add New Job' }}</h5>
+
+    <div class="mb-3">
+      <label for="title" class="form-label"><i class="bi bi-type me-1"></i>Job Title</label>
+      <input type="text" id="title" formControlName="title" class="form-control" placeholder="Enter job title" />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label"><i class="bi bi-card-text me-1"></i>Description</label>
+      <textarea id="description" formControlName="description" class="form-control" rows="3" placeholder="Job description..."></textarea>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="location" class="form-label"><i class="bi bi-geo-alt-fill me-1"></i>Location</label>
+        <input type="text" id="location" formControlName="location" class="form-control" placeholder="e.g. Chennai" />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="jobType" class="form-label"><i class="bi bi-clock-history me-1"></i>Job Type</label>
+        <select id="jobType" formControlName="jobType" class="form-select">
+          <option value="Full Time">Full Time</option>
+          <option value="Part Time">Part Time</option>
+          <option value="Internship">Internship</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="qualifications" class="form-label"><i class="bi bi-award-fill me-1"></i>Qualifications</label>
+      <input type="text" id="qualifications" formControlName="qualifications" class="form-control" placeholder="e.g. B.Tech, MBA" />
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" id="active" formControlName="active" class="form-check-input" />
+      <label for="active" class="form-check-label"><i class="bi bi-check2-circle me-1"></i>Active</label>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-success">
+        <i class="bi bi-save-fill me-1"></i> {{ editingJobId ? 'Update Job' : 'Add Job' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="resetForm()">
+        <i class="bi bi-arrow-clockwise me-1"></i>Reset
+      </button>
+    </div>
+  </form>
+
+  <!-- ✅ Job List -->
+  <h4 class="mb-3 text-info"><i class="bi bi-list-task me-2"></i>Posted Jobs</h4>
+
+  <div *ngIf="jobs.length === 0" class="alert alert-info">
+    <i class="bi bi-info-circle-fill me-2"></i>No jobs have been posted yet.
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item mb-2 shadow-sm border-start border-primary border-3" *ngFor="let job of jobs">
+      <div>
+        <h5 class="mb-1 text-dark">
+          <i class="bi bi-briefcase-fill me-2"></i>{{ job.title || 'Untitled' }}
+          <span class="badge bg-secondary ms-2"><i class="bi bi-geo-alt me-1"></i>{{ job.location || 'N/A' }}</span>
+        </h5>
+        <p class="mb-1 text-muted"><i class="bi bi-card-text me-1"></i>{{ job.description || 'No description' }}</p>
+        <p class="mb-1">
+          <strong><i class="bi bi-clock me-1"></i>Type:</strong> {{ job.jobType }} |
+          <strong><i class="bi bi-award me-1"></i>Qualifications:</strong> {{ job.qualifications }}
+        </p>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-primary" (click)="editJob(job)">
+            <i class="bi bi-pencil-fill me-1"></i>Edit
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteJob(job.jobid!)">
+            <i class="bi bi-trash-fill me-1"></i>Delete
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

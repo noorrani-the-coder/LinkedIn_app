@@ -1,0 +1,17 @@
+<div class="forms-container">
+  <h2>Received Jobseeker Applications</h2>
+
+  <div *ngIf="jobSeekerData.length; else noData">
+    <div class="jobseeker-card" *ngFor="let seeker of jobSeekerData">
+      <p><strong>Name:</strong> {{ seeker.fullName }}</p>
+      <p><strong>Education:</strong> {{ seeker.education }}</p>
+      <p><strong>Experience:</strong> {{ seeker.experience }}</p>
+      <p><strong>Skills:</strong> {{ seeker.skills }}</p>
+      <p><strong>Email:</strong> {{ seeker.contactInfo }}</p>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <p>No jobseeker forms submitted yet.</p>
+  </ng-template>
+</div>

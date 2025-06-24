@@ -1,0 +1,21 @@
+<div class="job-list-container">
+  <h2>Available Jobs</h2>
+
+  <div *ngIf="jobs.length === 0">
+    <p>No jobs available at the moment.</p>
+  </div>
+
+  <div *ngFor="let job of jobs" class="job-card border p-3 mb-3 rounded shadow-sm bg-white">
+    <h4>{{ job.title }}</h4>
+    <p><strong>Description:</strong> {{ job.description }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+    <p><strong>Job Type:</strong> {{ job.jobType }}</p>
+    <p><strong>Qualifications:</strong> {{ job.qualifications }}</p>
+    <p><strong>Posted Date:</strong> {{ job.postedDate | date: 'longDate' }}</p>
+    <p><strong>Status:</strong> 
+      <span [ngClass]="{'text-success': job.active, 'text-danger': !job.active}">
+        {{ job.active ? 'Open' : 'Closed' }}
+      </span>
+    </p>
+  </div>
+</div>

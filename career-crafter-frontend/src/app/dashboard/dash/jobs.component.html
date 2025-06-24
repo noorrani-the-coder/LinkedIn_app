@@ -1,0 +1,14 @@
+<div class="job-list-container">
+  <h2>Available Jobs</h2>
+
+  <div *ngIf="jobs.length === 0">
+    <p>No jobs available at the moment.</p>
+  </div>
+
+  <div *ngFor="let job of jobs" class="job-card">
+    <h3>{{ job.jobTitle }}</h3>
+    <p><strong>Description:</strong> {{ job.jobDescription }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+    <p><strong>Salary:</strong> {{ job.salary }}</p>
+  </div>
+</div>

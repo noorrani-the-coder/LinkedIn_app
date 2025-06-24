@@ -1,0 +1,18 @@
+<form [formGroup]="employerForm" (ngSubmit)="onSubmit()" class="form-container">
+  <h2>Employer Registration</h2>
+
+  <label>Company Name:</label>
+  <input type="text" formControlName="companyName" required />
+
+  <label>Industry:</label>
+  <input type="text" formControlName="industry" />
+
+  <label>Contact Person:</label>
+  <input type="text" formControlName="contactPerson" />
+
+  <label>Contact Email:</label>
+  <input type="email" formControlName="contactEmail" required />
+
+  <button type="submit" [disabled]="employerForm.invalid">Submit</button>
+</form>
+

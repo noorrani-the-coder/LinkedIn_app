@@ -1,0 +1,25 @@
+.job-list-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.job-card {
+  background-color: #f5f7fa;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+
+  h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+
+  p {
+    margin: 6px 0;
+    color: #333;
+  }
+}

@@ -1,0 +1,59 @@
+<div class="container mt-5">
+
+  <!-- 🔧 Page Title -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">
+      <i class="bi bi-pencil-square me-2"></i>Edit Employer Profile
+    </h2>
+    <button class="btn btn-outline-secondary" (click)="goToDashboard()">
+      <i class="bi bi-arrow-left-circle me-1"></i> Back
+    </button>
+  </div>
+
+  <!-- 📝 Form Card -->
+  <div class="card shadow-sm border-start border-primary border-4">
+    <div class="card-body">
+      <form [formGroup]="employerForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="companyName" class="form-label">
+            <i class="bi bi-building me-1"></i>Company Name
+          </label>
+          <input id="companyName" type="text" class="form-control" formControlName="companyName" placeholder="Enter company name" />
+        </div>
+
+        <div class="mb-3">
+          <label for="industry" class="form-label">
+            <i class="bi bi-graph-up me-1"></i>Industry
+          </label>
+          <input id="industry" type="text" class="form-control" formControlName="industry" placeholder="e.g. IT, Manufacturing" />
+        </div>
+
+        <div class="mb-3">
+          <label for="contactPerson" class="form-label">
+            <i class="bi bi-person-badge me-1"></i>Contact Person
+          </label>
+          <input id="contactPerson" type="text" class="form-control" formControlName="contactPerson" placeholder="Name of contact person" />
+        </div>
+
+        <div class="mb-4">
+          <label for="contactEmail" class="form-label">
+            <i class="bi bi-envelope-fill me-1"></i>Contact Email
+          </label>
+          <input id="contactEmail" type="email" class="form-control" formControlName="contactEmail" placeholder="example@email.com" />
+        </div>
+
+        <!-- 🧭 Buttons -->
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-success" [disabled]="employerForm.invalid">
+            <i class="bi bi-check-circle-fill me-1"></i> Update Profile
+          </button>
+
+          <button type="button" class="btn btn-outline-secondary" (click)="goToDashboard()">
+            <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

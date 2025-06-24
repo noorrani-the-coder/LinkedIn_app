@@ -1,0 +1,19 @@
+<form [formGroup]="jobSeekerForm" (ngSubmit)="onSubmit()" class="form-container">
+  <label>Full Name:</label>
+  <input type="text" formControlName="fullName" />
+
+  <label>Education:</label>
+  <input type="text" formControlName="education" />
+
+  <label>Experience:</label>
+  <input type="text" formControlName="experience" />
+
+  <label>Skills:</label>
+  <input type="text" formControlName="skills" placeholder="e.g. Java, Angular" />
+
+  <label>Email:</label>
+  <input type="email" formControlName="contactInfo" />
+
+  <button type="submit">Submit</button>
+
+</form>
